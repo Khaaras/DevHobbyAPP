@@ -4,11 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DevHobby.BLLTesty
 {
     [TestClass]
-    public class UnitTest1
+    public class DostawcaTesty
     {
         [TestMethod]
         public void TestMethod1()
         {
+
         }
     }
 }
