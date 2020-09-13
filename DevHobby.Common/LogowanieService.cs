@@ -11,7 +11,7 @@ namespace DevHobby.Common
     /// </summary>
     /// 
 
-    public class LogowanieService
+    public static class LogowanieService
     {
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace DevHobby.Common
         /// </summary>
         /// <param name="akcja">Akcja do zalogowania</param>
         /// <returns></returns>
-        public string Logowanie(string akcja)
+        public static string Logowanie(string akcja)
         {
             var tekstDoZalogowania = "Akcja: " + akcja;
             Console.WriteLine(tekstDoZalogowania);

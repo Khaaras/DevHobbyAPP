@@ -17,14 +17,36 @@ namespace DevHobby.BLL.Tests
 
             // Arrange
             var produkt = new Produkt();
-            
+            produkt.ProduktId = 1;
+            produkt.NazwaProduktu = "Biurko";
+            produkt.Opis = "Czerwone biurko";
+
+            var oczekiwana = "Witaj Biurko (1): Czerwone biurko";
+
 
             // Act
-
+            var aktualna = produkt.PowiedzWitaj();
 
             // Assert
 
-            Assert.Fail();
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
+
+        [TestMethod()]
+        public void PowiedzWitajSparametryzowanyKonstruktorTest()
+        {
+
+            // Arrange
+            var produkt = new Produkt(1, "Biurko", "Czerwone biurko");        
+            var oczekiwana = "Witaj Biurko (1): Czerwone biurko";
+
+
+            // Act
+            var aktualna = produkt.PowiedzWitaj();
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana, aktualna);
         }
     }
 }
