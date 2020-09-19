@@ -14,11 +14,13 @@ namespace DevHobby.BLL
 
     public class Dostawca
     {
+        #region Pola i właściwości
         public int DostawcaId { get; set; }
         public string NazwaFirmy { get; set; }
         public string Email { get; set; }
+        #endregion
 
-
+        #region Metody
         /// <summary>
         /// Wysyła wiadomośc email, aby powitac nowego dostawcę
         /// </summary>
@@ -34,5 +36,6 @@ namespace DevHobby.BLL
 
 
         }
+        #endregion
     }
 }

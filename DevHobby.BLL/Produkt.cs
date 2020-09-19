@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DevHobby.Common;
+using System;
+using static DevHobby.Common.LogowanieService; // pozwala nam aby wywołować członków klasy LogowanieService bez określania nazwy klasy
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,7 @@ namespace DevHobby.BLL
 
     public class Produkt
     {
+        #region Konstruktory
         public Produkt()
         {
             Console.WriteLine("Produkt został utworzony");
@@ -28,11 +31,13 @@ namespace DevHobby.BLL
 
             
         }
+        #endregion
 
         private int produktId;
 
+        #region Pola i właściwości
         public int ProduktId
-        {
+        { 
             get { return produktId; }
             set { produktId = value; }
         }
@@ -53,13 +58,23 @@ namespace DevHobby.BLL
             set { opis = value; }
         }
 
+        #endregion
+
+        #region Metody
         public string PowiedzWitaj()
         {
+            var dostawca = new Dostawca();
+            dostawca.wyslijEmailWitamy("Wiadomość z produktu");
+
+            var emailServices = new EmailService();
+            var potwierdzenie = emailServices.WyslijWiadomosc("Nowy produkt",this.nazwaProduktu,"Marketing@devhobby.pl");
+
+            var wynik = Logowanie("Powiedziano witaj");
 
             return "Witaj " + NazwaProduktu + " (" + ProduktId + "): " + Opis;
         }
 
-
+        #endregion
 
     }
 }
