@@ -20,8 +20,9 @@ namespace DevHobby.BLL.Tests
             produkt.ProduktId = 1;
             produkt.NazwaProduktu = "Biurko";
             produkt.Opis = "Czerwone biurko";
+            produkt.DostawcaProduktu.NazwaFirmy = "DevHobby";
 
-            var oczekiwana = "Witaj Biurko (1): Czerwone biurko";
+            var oczekiwana = "Witaj Biurko (1): Czerwone biurko dostępny od: ";
 
 
             // Act
@@ -33,16 +34,73 @@ namespace DevHobby.BLL.Tests
         }
 
         [TestMethod()]
-        public void PowiedzWitajSparametryzowanyKonstruktorTest()
+        public void PowiedzWitaj_SparametryzowanyKonstruktorTest()
         {
 
             // Arrange
             var produkt = new Produkt(1, "Biurko", "Czerwone biurko");        
-            var oczekiwana = "Witaj Biurko (1): Czerwone biurko";
+            var oczekiwana = "Witaj Biurko (1): Czerwone biurko dostępny od: ";
 
 
             // Act
             var aktualna = produkt.PowiedzWitaj();
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
+
+        [TestMethod()]
+        public void PowiedzWitaj_InicjalizatorObiektu()
+        {
+
+            // Arrange
+            var produkt = new Produkt
+            {
+                ProduktId = 1,
+                NazwaProduktu = "Biurko",
+                Opis = "Czerwone biurko"
+            };
+
+            var oczekiwana = "Witaj Biurko (1): Czerwone biurko dostępny od: ";
+
+
+            // Act
+            var aktualna = produkt.PowiedzWitaj();
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
+
+        [TestMethod()]
+        public void Produkt_NullTest()
+        {
+
+            // Arrange 
+            Produkt produkt = null;
+
+            string oczekiwana = null;
+
+
+            // Act
+            var aktualna = produkt?.DostawcaProduktu?.NazwaFirmy;
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
+
+        [TestMethod()]
+        public void Konwersja_CaliNaMetr()
+        {
+
+            // Arrange 
+            var oczekiwana = 194.35;
+
+
+            // Act
+            var aktualna = 5 * Produkt.CaliNaMetr;
 
             // Assert
 

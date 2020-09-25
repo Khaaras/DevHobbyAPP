@@ -15,10 +15,13 @@ namespace DevHobby.BLL
 
     public class Produkt
     {
+        public const double CaliNaMetr = 38.87;
+
         #region Konstruktory
         public Produkt()
         {
             Console.WriteLine("Produkt został utworzony");
+            //this.DostawcaProduktu = new Dostawca();
         }
 
         public Produkt(int produktId, string nazwaProduktu, string opis) : this()
@@ -36,6 +39,7 @@ namespace DevHobby.BLL
         private int produktId;
 
         #region Pola i właściwości
+
         public int ProduktId
         { 
             get { return produktId; }
@@ -58,20 +62,46 @@ namespace DevHobby.BLL
             set { opis = value; }
         }
 
+        private Dostawca dostawcaProduktu;
+
+        public Dostawca DostawcaProduktu
+        {
+            get 
+            {
+                if (dostawcaProduktu == null)
+                {
+                    dostawcaProduktu = new Dostawca();
+                }
+                return dostawcaProduktu;
+            }
+            set { dostawcaProduktu = value; }
+        }
+
+        private DateTime? datadostepnosci;
+
+        public DateTime? DataDostepnosci
+        {
+            get { return datadostepnosci; }
+            set { datadostepnosci = value; }
+        }
+
+
+
         #endregion
 
         #region Metody
         public string PowiedzWitaj()
         {
-            var dostawca = new Dostawca();
-            dostawca.wyslijEmailWitamy("Wiadomość z produktu");
+            //var dostawca = new Dostawca();
+            //dostawca.wyslijEmailWitamy("Wiadomość z produktu");
 
             var emailServices = new EmailService();
             var potwierdzenie = emailServices.WyslijWiadomosc("Nowy produkt",this.nazwaProduktu,"Marketing@devhobby.pl");
 
             var wynik = Logowanie("Powiedziano witaj");
 
-            return "Witaj " + NazwaProduktu + " (" + ProduktId + "): " + Opis;
+            return "Witaj " + NazwaProduktu + " (" + ProduktId + "): " + Opis + " dostępny od: " + DataDostepnosci?.ToShortDateString(); 
+
         }
 
         #endregion
