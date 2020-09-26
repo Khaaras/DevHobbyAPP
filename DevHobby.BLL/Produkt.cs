@@ -17,11 +17,14 @@ namespace DevHobby.BLL
     {
         public const double CaliNaMetr = 38.87;
 
+        public readonly decimal MinimalnaCena;
+
         #region Konstruktory
         public Produkt()
         {
             Console.WriteLine("Produkt został utworzony");
             //this.DostawcaProduktu = new Dostawca();
+            this.MinimalnaCena = 10.50m;
         }
 
         public Produkt(int produktId, string nazwaProduktu, string opis) : this()
@@ -29,6 +32,10 @@ namespace DevHobby.BLL
             this.ProduktId = produktId;
             this.NazwaProduktu = nazwaProduktu;
             this.Opis = opis;
+            if (NazwaProduktu.StartsWith("Krzesło"))
+            {
+                this.MinimalnaCena = 120.99m;
+            }
 
             Console.WriteLine("Produkt ma nazwę: " + nazwaProduktu);
 
@@ -98,7 +105,7 @@ namespace DevHobby.BLL
             var emailServices = new EmailService();
             var potwierdzenie = emailServices.WyslijWiadomosc("Nowy produkt",this.nazwaProduktu,"Marketing@devhobby.pl");
 
-            var wynik = Logowanie("Powiedziano witaj");
+            var wynik = Logowanie("Powiedziano witaj");            
 
             return "Witaj " + NazwaProduktu + " (" + ProduktId + "): " + Opis + " dostępny od: " + DataDostepnosci?.ToShortDateString(); 
 
