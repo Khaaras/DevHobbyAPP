@@ -57,8 +57,27 @@ namespace DevHobby.BLL
 
         public string NazwaProduktu
         {
-            get { return nazwaProduktu; }
-            set { nazwaProduktu = value; }
+            get 
+            {
+                var sformatowanaNazwaProduktu = nazwaProduktu?.Trim();
+                return sformatowanaNazwaProduktu; 
+            }
+            set 
+            {
+                if (value.Length < 4)
+                {
+                    Wiadomosc = "Nazwa produktu musi być dłuższa niż 4 znaki";
+                }
+                
+                else if (value.Length > 30)
+                {
+                    Wiadomosc = "Nazwa produktu musi być krótsza niż 30 znaków";
+                }
+                else
+                {
+                    nazwaProduktu = value;
+                }
+            }
         }
 
         private string opis;
@@ -85,6 +104,7 @@ namespace DevHobby.BLL
         }
 
         private DateTime? datadostepnosci;
+        public string Wiadomosc;
 
         public DateTime? DataDostepnosci
         {

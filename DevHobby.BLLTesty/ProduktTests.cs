@@ -139,5 +139,78 @@ namespace DevHobby.BLL.Tests
 
             Assert.AreEqual(oczekiwana, aktualna);
         }
+        [TestMethod()]
+        public void NazwaProduktu_FormatTest()
+        {
+
+            // Arrange 
+            var produkt = new Produkt();
+            produkt.NazwaProduktu = " Krzesło obrotowe ";
+            var oczekiwana = "Krzesło obrotowe";
+
+            // Act
+            var aktualna = produkt.NazwaProduktu;
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana, aktualna);
+        }
+        [TestMethod()]
+        public void NazwaProduktu_ZaKrotkaTest()
+        {
+
+            // Arrange 
+            var produkt = new Produkt();
+            produkt.NazwaProduktu = "Krz";
+            string oczekiwana = null;
+            string oczekiwanaWiadomosc = "Nazwa produktu musi być dłuższa niż 4 znaki";
+
+            // Act
+            var aktualna = produkt.NazwaProduktu;
+            var aktualnaWiadomosc = produkt.Wiadomosc;
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana, aktualna);
+            Assert.AreEqual(oczekiwanaWiadomosc, aktualnaWiadomosc);
+        }
+        [TestMethod()]
+        public void NazwaProduktu_ZaDlugaTest()
+        {
+
+            // Arrange 
+            var produkt = new Produkt();
+            produkt.NazwaProduktu = "Krzesło obrotowe zbyt długa nazwa";
+            string oczekiwana = null;
+            string oczekiwanaWiadomosc = "Nazwa produktu musi być krótsza niż 30 znaków";
+
+            // Act
+            var aktualna = produkt.NazwaProduktu;
+            var aktualnaWiadomosc = produkt.Wiadomosc;
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana, aktualna);
+            Assert.AreEqual(oczekiwanaWiadomosc, aktualnaWiadomosc);
+        }
+        [TestMethod()]
+        public void NazwaProduktu_DobraDlugoscTest()
+        {
+
+            // Arrange 
+            var produkt = new Produkt();
+            produkt.NazwaProduktu = "Krzesło obrotowe";
+            var oczekiwana = "Krzesło obrotowe";
+            string oczekiwanaWiadomosc = null;
+
+            // Act
+            var aktualna = produkt.NazwaProduktu;
+            var aktualnaWiadomosc = produkt.Wiadomosc;
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana, aktualna);
+            Assert.AreEqual(oczekiwanaWiadomosc, aktualnaWiadomosc);
+        }
     }
 }
