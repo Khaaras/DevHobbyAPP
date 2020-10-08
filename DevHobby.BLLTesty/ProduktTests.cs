@@ -286,5 +286,45 @@ namespace DevHobby.BLL.Tests
             Assert.AreEqual(oczekiwana, aktualna);
 
         }
+        [TestMethod()]
+        public void KodProduktu_WartoscDomyslnaTest()
+        {
+
+            // Arrange 
+            var produkt = new Produkt();
+            
+            var oczekiwana = "Informatyka - 1";
+
+
+            // Act
+            var aktualna = produkt.KodProduktu;
+
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana, aktualna);
+
+        }
+        [TestMethod()]
+        public void KodProduktu_NowaWartoscTest()
+        {
+
+            // Arrange 
+            var produkt = new Produkt();
+            produkt.Kategoria = "Historia";
+            produkt.Numer = 10;
+
+            var oczekiwana = "Historia - 10";
+
+
+            // Act
+            var aktualna = produkt.KodProduktu;
+
+
+            // Assert
+
+            Assert.AreEqual(oczekiwana, aktualna);
+
+        }
     }
 }

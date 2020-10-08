@@ -118,7 +118,7 @@ namespace DevHobby.BLL
         public int Numer { get; set; } = 1;
 
 
-
+        public string KodProduktu => this.Kategoria + " - " + this.Numer;
 
         #endregion
 
