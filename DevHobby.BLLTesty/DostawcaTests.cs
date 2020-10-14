@@ -121,7 +121,7 @@ namespace DevHobby.BLL.Testy
 
             var dostawca = new Dostawca();
             var produkt = new Produkt(1, "Biurko", "Opis");
-            var wartoscOczekiwana = new WynikOperacji(true, "Zamówienie z DevHobby.pl\r\nProdukt : Informatyka - 1\r\nIlość : 15\r\nData dostawy: 2020-10-22");
+            var wartoscOczekiwana = new WynikOperacji(true, "Zamówienie z DevHobby.pl\r\nProdukt : Informatyka - 1\r\nIlość : 15\r\nData dostawy: 22.10.2020");
 
 
             // Act (działaj)
@@ -142,7 +142,7 @@ namespace DevHobby.BLL.Testy
             var dostawca = new Dostawca();
             var produkt = new Produkt(1, "Biurko", "Opis");
             var wartoscOczekiwana = new WynikOperacji(true, "Zamówienie z DevHobby.pl\r\nProdukt : Informatyka - 1" +
-                "\r\nIlość : 15\r\nData dostawy: 2020-10-22\r\nInstrukcje: testowe instrukcje");
+                "\r\nIlość : 15\r\nData dostawy: 22.10.2020\r\nInstrukcje: testowe instrukcje");
 
 
             // Act (działaj)

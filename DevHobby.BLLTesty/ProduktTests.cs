@@ -38,7 +38,7 @@ namespace DevHobby.BLL.Tests
         {
 
             // Arrange
-            var produkt = new Produkt(1, "Biurko", "Czerwone biurko");        
+            var produkt = new Produkt(1, "Biurko", "Czerwone biurko");
             var oczekiwana = "Witaj Biurko (1): Czerwone biurko dostępny od: ";
 
 
@@ -217,18 +217,18 @@ namespace DevHobby.BLL.Tests
         {
 
             // Arrange 
-            var produkt = new Produkt();            
+            var produkt = new Produkt();
             var oczekiwana = "Informatyka";
 
 
             // Act
             var aktualna = produkt.Kategoria;
-            
+
 
             // Assert
 
             Assert.AreEqual(oczekiwana, aktualna);
-            
+
         }
         [TestMethod()]
         public void Kategoria_NowaWartoscTest()
@@ -254,7 +254,7 @@ namespace DevHobby.BLL.Tests
         {
 
             // Arrange 
-            var produkt = new Produkt();            
+            var produkt = new Produkt();
             var oczekiwana = 1;
 
 
@@ -292,7 +292,7 @@ namespace DevHobby.BLL.Tests
 
             // Arrange 
             var produkt = new Produkt();
-            
+
             var oczekiwana = "Informatyka - 1";
 
 
@@ -325,6 +325,26 @@ namespace DevHobby.BLL.Tests
 
             Assert.AreEqual(oczekiwana, aktualna);
 
+        }
+
+        [TestMethod()]
+        public void ObliczSugerowanaCenaTest()
+        {
+            // Arrange 
+
+            var produkt = new Produkt(1, "Biurko", "Opis");
+            produkt.Koszt = 200m;
+            var oczekiwana = 220m;
+
+
+
+            // Act
+
+            var aktualna = produkt.ObliczSugerowanaCena(10);
+
+
+            // Assert
+            Assert.AreEqual(oczekiwana, aktualna);
         }
     }
 }
