@@ -40,7 +40,7 @@ namespace DevHobby.BLL
 
             Console.WriteLine("Produkt ma nazwę: " + nazwaProduktu);
 
-            
+
         }
         #endregion
 
@@ -49,7 +49,7 @@ namespace DevHobby.BLL
         #region Pola i właściwości
 
         public int ProduktId
-        { 
+        {
             get { return produktId; }
             set { produktId = value; }
         }
@@ -58,18 +58,18 @@ namespace DevHobby.BLL
 
         public string NazwaProduktu
         {
-            get 
+            get
             {
                 var sformatowanaNazwaProduktu = nazwaProduktu?.Trim();
-                return sformatowanaNazwaProduktu; 
+                return sformatowanaNazwaProduktu;
             }
-            set 
+            set
             {
                 if (value.Length < 4)
                 {
                     Wiadomosc = "Nazwa produktu musi być dłuższa niż 4 znaki";
                 }
-                
+
                 else if (value.Length > 30)
                 {
                     Wiadomosc = "Nazwa produktu musi być krótsza niż 30 znaków";
@@ -93,7 +93,7 @@ namespace DevHobby.BLL
 
         public Dostawca DostawcaProduktu
         {
-            get 
+            get
             {
                 if (dostawcaProduktu == null)
                 {
@@ -118,7 +118,7 @@ namespace DevHobby.BLL
         public int Numer { get; set; } = 1;
 
 
-        public string KodProduktu => this.Kategoria + " - " + this.Numer;
+        public string KodProduktu => String.Format("{0} - {1:0000}", this.Kategoria, this.Numer);
 
         public decimal Koszt { get; set; }
 
